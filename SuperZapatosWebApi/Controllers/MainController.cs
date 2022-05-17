@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperZapatosWebApi.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,13 @@ namespace SuperZapatosWebApi.Controllers
 {
     public class MainController : Controller
     {
+        protected IRepository Repository { get; set; }
+
+        public MainController()
+        {
+            Repository = new EF_Repository();
+        }
+
         public ActionResult Index()
         {
             return View();

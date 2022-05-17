@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SuperZapatosWebApi.Repositorio
 {
-    interface IRepository
+    public interface IRepository
     {
         DtoResponse<int> Insert<T>(T entidad) where T : class;
         IQueryable<T> Read<T>(Func<T, bool> filtro, bool esCargaPerezosa) where T : class;
