@@ -11,7 +11,7 @@ namespace SuperZapatos.WinForms.Helpers
 {
     public class RequestHelper
     {
-        public string SendJsonRequest<T>(string url, T objectRequest, string method = "POST")
+        public async Task<string> SendJsonRequest<T>(string url, T objectRequest, string method = "POST")
         {
             var result = string.Empty;
             try
@@ -38,7 +38,7 @@ namespace SuperZapatos.WinForms.Helpers
                 var httpResponse = (HttpWebResponse)request.GetResponse();
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
-                    result = streamReader.ReadToEnd();
+                    result = await streamReader.ReadToEndAsync();
                 }
 
             }
@@ -49,7 +49,7 @@ namespace SuperZapatos.WinForms.Helpers
 
             return result;
         }
-        public string SendSampleRequest<T>(string url, string method = "POST")
+        public async Task<string>  SendSampleRequest<T>(string url, string method = "POST")
         {
             var result = string.Empty;
             try
@@ -60,7 +60,7 @@ namespace SuperZapatos.WinForms.Helpers
                 var httpResponse = (HttpWebResponse)request.GetResponse();
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
-                    result = streamReader.ReadToEnd();
+                    result = await streamReader.ReadToEndAsync();
                 }
 
             }

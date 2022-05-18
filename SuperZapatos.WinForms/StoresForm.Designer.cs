@@ -36,11 +36,11 @@ namespace SuperZapatos.WinForms
             this.UpdateStore = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DeleteStore = new System.Windows.Forms.DataGridViewButtonColumn();
             this.newStore = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBox_NewStore_Name = new System.Windows.Forms.TextBox();
+            this.txtBox_NewStore_Address = new System.Windows.Forms.TextBox();
             this.lbl_NameStore = new System.Windows.Forms.Label();
             this.lbl_AddressStore = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtBox_SearhStores = new System.Windows.Forms.TextBox();
             this.btn_SearchStores = new System.Windows.Forms.Button();
             this.lbl_SearchStore = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -63,12 +63,12 @@ namespace SuperZapatos.WinForms
             this.Address,
             this.UpdateStore,
             this.DeleteStore});
-            this.dgv_Stores.Location = new System.Drawing.Point(23, 154);
-            this.dgv_Stores.Margin = new System.Windows.Forms.Padding(2);
+            this.dgv_Stores.Location = new System.Drawing.Point(31, 190);
+            this.dgv_Stores.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv_Stores.Name = "dgv_Stores";
             this.dgv_Stores.RowHeadersWidth = 51;
             this.dgv_Stores.RowTemplate.Height = 24;
-            this.dgv_Stores.Size = new System.Drawing.Size(703, 278);
+            this.dgv_Stores.Size = new System.Drawing.Size(937, 342);
             this.dgv_Stores.TabIndex = 0;
             this.dgv_Stores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -93,75 +93,76 @@ namespace SuperZapatos.WinForms
             // 
             // UpdateStore
             // 
-            this.UpdateStore.HeaderText = "Actualizar";
+            this.UpdateStore.HeaderText = "-";
             this.UpdateStore.MinimumWidth = 6;
             this.UpdateStore.Name = "UpdateStore";
+            this.UpdateStore.Text = "as";
             // 
             // DeleteStore
             // 
-            this.DeleteStore.HeaderText = "Eliminar";
+            this.DeleteStore.HeaderText = "-";
             this.DeleteStore.MinimumWidth = 6;
             this.DeleteStore.Name = "DeleteStore";
             // 
             // newStore
             // 
-            this.newStore.Location = new System.Drawing.Point(543, 28);
-            this.newStore.Margin = new System.Windows.Forms.Padding(2);
+            this.newStore.Location = new System.Drawing.Point(724, 34);
+            this.newStore.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.newStore.Name = "newStore";
-            this.newStore.Size = new System.Drawing.Size(110, 39);
+            this.newStore.Size = new System.Drawing.Size(147, 48);
             this.newStore.TabIndex = 1;
             this.newStore.Text = "Agregar Tienda";
             this.newStore.UseVisualStyleBackColor = true;
+            this.newStore.Click += new System.EventHandler(this.newStore_Click);
             // 
-            // textBox1
+            // txtBox_NewStore_Name
             // 
-            this.textBox1.Location = new System.Drawing.Point(142, 25);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(325, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtBox_NewStore_Name.Location = new System.Drawing.Point(189, 31);
+            this.txtBox_NewStore_Name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBox_NewStore_Name.Name = "txtBox_NewStore_Name";
+            this.txtBox_NewStore_Name.Size = new System.Drawing.Size(432, 22);
+            this.txtBox_NewStore_Name.TabIndex = 2;
             // 
-            // textBox2
+            // txtBox_NewStore_Address
             // 
-            this.textBox2.Location = new System.Drawing.Point(140, 56);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(325, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtBox_NewStore_Address.Location = new System.Drawing.Point(187, 69);
+            this.txtBox_NewStore_Address.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBox_NewStore_Address.Name = "txtBox_NewStore_Address";
+            this.txtBox_NewStore_Address.Size = new System.Drawing.Size(432, 22);
+            this.txtBox_NewStore_Address.TabIndex = 3;
             // 
             // lbl_NameStore
             // 
             this.lbl_NameStore.AutoSize = true;
-            this.lbl_NameStore.Location = new System.Drawing.Point(25, 28);
-            this.lbl_NameStore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_NameStore.Location = new System.Drawing.Point(33, 34);
             this.lbl_NameStore.Name = "lbl_NameStore";
-            this.lbl_NameStore.Size = new System.Drawing.Size(102, 13);
+            this.lbl_NameStore.Size = new System.Drawing.Size(136, 17);
             this.lbl_NameStore.TabIndex = 4;
             this.lbl_NameStore.Text = "Nombre de la tienda";
             // 
             // lbl_AddressStore
             // 
             this.lbl_AddressStore.AutoSize = true;
-            this.lbl_AddressStore.Location = new System.Drawing.Point(75, 59);
-            this.lbl_AddressStore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_AddressStore.Location = new System.Drawing.Point(100, 73);
             this.lbl_AddressStore.Name = "lbl_AddressStore";
-            this.lbl_AddressStore.Size = new System.Drawing.Size(52, 13);
+            this.lbl_AddressStore.Size = new System.Drawing.Size(67, 17);
             this.lbl_AddressStore.TabIndex = 5;
             this.lbl_AddressStore.Text = "Dirección";
             // 
-            // textBox3
+            // txtBox_SearhStores
             // 
-            this.textBox3.Location = new System.Drawing.Point(140, 14);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(325, 20);
-            this.textBox3.TabIndex = 6;
+            this.txtBox_SearhStores.Location = new System.Drawing.Point(187, 17);
+            this.txtBox_SearhStores.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBox_SearhStores.Name = "txtBox_SearhStores";
+            this.txtBox_SearhStores.Size = new System.Drawing.Size(432, 22);
+            this.txtBox_SearhStores.TabIndex = 6;
             // 
             // btn_SearchStores
             // 
-            this.btn_SearchStores.Location = new System.Drawing.Point(543, 14);
-            this.btn_SearchStores.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_SearchStores.Location = new System.Drawing.Point(724, 17);
+            this.btn_SearchStores.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_SearchStores.Name = "btn_SearchStores";
-            this.btn_SearchStores.Size = new System.Drawing.Size(110, 28);
+            this.btn_SearchStores.Size = new System.Drawing.Size(147, 34);
             this.btn_SearchStores.TabIndex = 7;
             this.btn_SearchStores.Text = "Buscar Tiendas";
             this.btn_SearchStores.UseVisualStyleBackColor = true;
@@ -170,10 +171,9 @@ namespace SuperZapatos.WinForms
             // lbl_SearchStore
             // 
             this.lbl_SearchStore.AutoSize = true;
-            this.lbl_SearchStore.Location = new System.Drawing.Point(31, 18);
-            this.lbl_SearchStore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_SearchStore.Location = new System.Drawing.Point(41, 22);
             this.lbl_SearchStore.Name = "lbl_SearchStore";
-            this.lbl_SearchStore.Size = new System.Drawing.Size(96, 13);
+            this.lbl_SearchStore.Size = new System.Drawing.Size(129, 17);
             this.lbl_SearchStore.TabIndex = 8;
             this.lbl_SearchStore.Text = "Buscar por nombre";
             this.lbl_SearchStore.Click += new System.EventHandler(this.label1_Click);
@@ -182,12 +182,14 @@ namespace SuperZapatos.WinForms
             // 
             this.groupBox1.Controls.Add(this.lbl_NameStore);
             this.groupBox1.Controls.Add(this.newStore);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtBox_NewStore_Name);
+            this.groupBox1.Controls.Add(this.txtBox_NewStore_Address);
             this.groupBox1.Controls.Add(this.lbl_AddressStore);
-            this.groupBox1.Location = new System.Drawing.Point(23, 12);
+            this.groupBox1.Location = new System.Drawing.Point(31, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(703, 84);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(937, 103);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tienda nueva";
@@ -195,26 +197,28 @@ namespace SuperZapatos.WinForms
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lbl_SearchStore);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.txtBox_SearhStores);
             this.groupBox2.Controls.Add(this.btn_SearchStores);
-            this.groupBox2.Location = new System.Drawing.Point(23, 102);
+            this.groupBox2.Location = new System.Drawing.Point(31, 126);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(703, 47);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(937, 58);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtrar lista de tiendas";
             // 
             // StoresForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(735, 447);
+            this.ClientSize = new System.Drawing.Size(980, 550);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgv_Stores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "StoresForm";
             this.Text = "Tiendas";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Stores)).EndInit();
@@ -230,19 +234,19 @@ namespace SuperZapatos.WinForms
 
         private System.Windows.Forms.DataGridView dgv_Stores;
         private System.Windows.Forms.Button newStore;
+        private System.Windows.Forms.TextBox txtBox_NewStore_Name;
+        private System.Windows.Forms.TextBox txtBox_NewStore_Address;
+        private System.Windows.Forms.Label lbl_NameStore;
+        private System.Windows.Forms.Label lbl_AddressStore;
+        private System.Windows.Forms.TextBox txtBox_SearhStores;
+        private System.Windows.Forms.Button btn_SearchStores;
+        private System.Windows.Forms.Label lbl_SearchStore;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridViewTextBoxColumn StoreId;
         private System.Windows.Forms.DataGridViewTextBoxColumn StoreName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewButtonColumn UpdateStore;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteStore;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label lbl_NameStore;
-        private System.Windows.Forms.Label lbl_AddressStore;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button btn_SearchStores;
-        private System.Windows.Forms.Label lbl_SearchStore;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

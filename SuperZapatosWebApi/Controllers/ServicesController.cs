@@ -102,15 +102,6 @@ namespace SuperZapatosWebApi.Controllers
             {
                 List<Store> stores = string.IsNullOrWhiteSpace(nameStore) ? Repository.GetDataAccess().Stores.ToList() :
                                                                             Repository.GetDataAccess().Stores.Where(x => x.Name.Contains(nameStore)).ToList();
-
-                var test = new Store()
-                {
-                    Id = 13,
-                    Address = "adreststes",
-                    Name = "Name store"
-                };
-
-                stores.Add(test);
                 response = new StoresResponse()
                 {
                     stores = stores,
@@ -134,14 +125,13 @@ namespace SuperZapatosWebApi.Controllers
         }
 
         [HttpPost]
-        public JsonResult CreateStore(string dataStore)
+        public JsonResult CreateStore(Store dataStore)
         {
 
             var response = new DtoResponse<int>();
             try
             {
-                var dataJson = JsonConvert.DeserializeObject<Store>(dataStore);
-                var newStore = new Store() { Name = dataJson.Name, Address = dataJson.Address };
+                var newStore = new Store() { Name = dataStore.Name, Address = dataStore.Address };
                 var insertStore = Repository.Insert<Store>(newStore);
                 response.Estado = insertStore.Estado;
                 response.Icono = insertStore.Icono;
@@ -164,15 +154,13 @@ namespace SuperZapatosWebApi.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateStore(string dataStore)
+        public JsonResult UpdateStore(Store dataStore)
         {
 
             var response = new DtoResponse<int>();
             try
             {
-                var dataJson = JsonConvert.DeserializeObject<Store>(dataStore);
-
-                var storeDb = Repository.GetDataAccess().Stores.Where(x => x.Id == dataJson.Id).FirstOrDefault();
+                var storeDb = Repository.GetDataAccess().Stores.Where(x => x.Id == dataStore.Id).FirstOrDefault();
                 if (storeDb == null)
                 {
                     response.Estado = false;
@@ -182,8 +170,8 @@ namespace SuperZapatosWebApi.Controllers
                 }
                 else
                 {
-                    storeDb.Name = dataJson.Name;
-                    storeDb.Address = dataJson.Address;
+                    storeDb.Name = dataStore.Name;
+                    storeDb.Address = dataStore.Address;
                     var insertStore = Repository.Update<Store>(storeDb);
                     response.Estado = insertStore.Estado;
                     response.Icono = insertStore.Icono;
@@ -207,7 +195,7 @@ namespace SuperZapatosWebApi.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
+        [HttpGet]
         public JsonResult DeleteStore(int id)
         {
 
@@ -335,14 +323,13 @@ namespace SuperZapatosWebApi.Controllers
         }
 
         [HttpPost]
-        public JsonResult CreateArticle(string data)
+        public JsonResult CreateArticle(Article data)
         {
 
             var response = new DtoResponse<int>();
             try
             {
-                var dataJson = JsonConvert.DeserializeObject<Article>(data);
-                var storeDb = Repository.GetDataAccess().Stores.Where(x => x.Id == dataJson.StoreId).FirstOrDefault();
+                var storeDb = Repository.GetDataAccess().Stores.Where(x => x.Id == data.StoreId).FirstOrDefault();
                 if (storeDb == null)
                 {
                     response.Estado = false;
@@ -355,12 +342,12 @@ namespace SuperZapatosWebApi.Controllers
                 {
                     var newArticle = new Article()
                     {
-                        Name = dataJson.Name,
-                        Description = dataJson.Description,
-                        Price = dataJson.Price,
+                        Name = data.Name,
+                        Description = data.Description,
+                        Price = data.Price,
                         StoreId = storeDb.Id,
-                        Total_in_shelf = dataJson.Total_in_shelf,
-                        Total_in_vault = dataJson.Total_in_vault
+                        Total_in_shelf = data.Total_in_shelf,
+                        Total_in_vault = data.Total_in_vault
                     };
                     var insertStore = Repository.Insert<Article>(newArticle);
                     response.Estado = insertStore.Estado;
@@ -385,15 +372,14 @@ namespace SuperZapatosWebApi.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateArticle(string data)
+        public JsonResult UpdateArticle(Article data)
         {
 
             var response = new DtoResponse<int>();
             try
             {
-                var dataJson = JsonConvert.DeserializeObject<Article>(data);
-                var articleDb = Repository.GetDataAccess().Articles.Where(x => x.Id == dataJson.Id).FirstOrDefault();
-                var storeDb = Repository.GetDataAccess().Stores.Where(x => x.Id == dataJson.StoreId).FirstOrDefault();
+                var articleDb = Repository.GetDataAccess().Articles.Where(x => x.Id == data.Id).FirstOrDefault();
+                var storeDb = Repository.GetDataAccess().Stores.Where(x => x.Id == data.StoreId).FirstOrDefault();
                 if (storeDb == null || articleDb == null)
                 {
                     response.Estado = false;
@@ -404,11 +390,11 @@ namespace SuperZapatosWebApi.Controllers
                 else
                 {
                     articleDb.StoreId = storeDb.Id;
-                    articleDb.Name = dataJson.Name;
-                    articleDb.Description = dataJson.Description;
-                    articleDb.Price = dataJson.Price;
-                    articleDb.Total_in_shelf = dataJson.Total_in_shelf;
-                    articleDb.Total_in_vault = dataJson.Total_in_vault;
+                    articleDb.Name = data.Name;
+                    articleDb.Description = data.Description;
+                    articleDb.Price = data.Price;
+                    articleDb.Total_in_shelf = data.Total_in_shelf;
+                    articleDb.Total_in_vault = data.Total_in_vault;
 
                     var insertStore = Repository.Update<Article>(articleDb);
                     response.Estado = insertStore.Estado;
