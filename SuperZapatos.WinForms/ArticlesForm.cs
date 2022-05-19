@@ -38,12 +38,12 @@ namespace SuperZapatos.WinForms
                     article = new Article()
                     {
                         Id = int.Parse(articleId.ToString()),
-                        Name = row.Cells["ArticleName"].Value.ToString(),
-                        Description = row.Cells["ArticleDescription"].Value.ToString(),
-                        Price = decimal.Parse(row.Cells["ArticlePrice"].Value.ToString()),
-                        Total_in_shelf = int.Parse(row.Cells["ArticleInShelf"].Value.ToString()),
-                        Total_in_vault = int.Parse(row.Cells["ArticleInVault"].Value.ToString()),
-                        StoreId = int.Parse(row.Cells["ArticleStoreId"].Value.ToString()),
+                        Name = row.Cells["ArticleName"].Value == null ? "" : row.Cells["ArticleName"].Value.ToString(),
+                        Description = row.Cells["ArticleDescription"].Value == null ? "" : row.Cells["ArticleDescription"].Value.ToString(),
+                        Price = row.Cells["ArticlePrice"].Value == null ? 0 :  decimal.Parse(row.Cells["ArticlePrice"].Value.ToString()),
+                        Total_in_shelf = row.Cells["ArticleInShelf"].Value == null ? 0 : int.Parse(row.Cells["ArticleInShelf"].Value.ToString()),
+                        Total_in_vault = row.Cells["ArticleInVault"].Value == null ? 0 : int.Parse(row.Cells["ArticleInVault"].Value.ToString()),
+                        StoreId = row.Cells["ArticleStoreId"].Value == null ? 0 : int.Parse(row.Cells["ArticleStoreId"].Value.ToString()),
                     };
                 }
 
@@ -94,7 +94,7 @@ namespace SuperZapatos.WinForms
 
             var itemAllStores = new Store() { Name = "Todas", Id = 0 };
             listStores.Add(itemAllStores);
-            ddl_selectStore.DataSource = listStores.OrderBy(x=>x.Id).ToList();
+            ddl_selectStore.DataSource = listStores.OrderBy(x => x.Id).ToList();
             ddl_selectStore.DisplayMember = "Name";
             ddl_selectStore.ValueMember = "Id";
         }

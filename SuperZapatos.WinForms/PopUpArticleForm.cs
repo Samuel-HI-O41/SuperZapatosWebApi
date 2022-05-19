@@ -50,34 +50,43 @@ namespace SuperZapatos.WinForms
 
         private async void btn_AddArticle_Click(object sender, EventArgs e)
         {
-            int articleId = int.Parse(txtBox_IdStore.Text);
-            var article = new Article()
+            string nameArticle = txt_NameArticle.Text;
+            if (string.IsNullOrWhiteSpace(nameArticle))
             {
-                Id = articleId,
-                Name = txt_NameArticle.Text,
-                StoreId = int.Parse(ddl_selectStore.SelectedValue.ToString()),
-                Description = txt_DescArticle.Text,
-                Price = numBox_Price.Value,
-                Total_in_shelf = (int)numBox_Shelf.Value,
-                Total_in_vault = (int)numBox_Vault.Value,
-
-            };
-
-            string url = article.Id == 0 ? "https://localhost:44300/Services/CreateArticle?data" : "https://localhost:44300/Services/UpdateArticle?data";
-
-            var response = await MyRequest.SendJsonRequest<Article>(url, article);
-            var model = JsonConvert.DeserializeObject<DtoResponse<int>>(response);
-            if (model.Estado)
-            {
-                await _articleForm.Update_DgvArticles("0");
-                Close();
+                MessageBox.Show("El campo 'Nombre' es obligatorio", "Info");
             }
             else
             {
-                _articleForm.Clear_DgvArticles();
-                MessageBox.Show("Error: " + model.Mensaje + "\n ErrorCode: " + model.Resultado, "Alerta");
-                Close();
+                int articleId = int.Parse(txtBox_IdStore.Text);
+                var article = new Article()
+                {
+                    Id = articleId,
+                    Name = txt_NameArticle.Text,
+                    StoreId = int.Parse(ddl_selectStore.SelectedValue.ToString()),
+                    Description = txt_DescArticle.Text,
+                    Price = numBox_Price.Value,
+                    Total_in_shelf = (int)numBox_Shelf.Value,
+                    Total_in_vault = (int)numBox_Vault.Value,
+
+                };
+
+                string url = article.Id == 0 ? "https://localhost:44300/Services/CreateArticle?data" : "https://localhost:44300/Services/UpdateArticle?data";
+
+                var response = await MyRequest.SendJsonRequest<Article>(url, article);
+                var model = JsonConvert.DeserializeObject<DtoResponse<int>>(response);
+                if (model.Estado)
+                {
+                    await _articleForm.Update_DgvArticles("0");
+                    Close();
+                }
+                else
+                {
+                    _articleForm.Clear_DgvArticles();
+                    MessageBox.Show("Error: " + model.Mensaje + "\n ErrorCode: " + model.Resultado, "Alerta");
+                    Close();
+                }
             }
+
         }
 
         #region publicMethods
@@ -137,6 +146,11 @@ namespace SuperZapatos.WinForms
         }
 
         private void ddl_selectStore_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_NameArticle_TextChanged(object sender, EventArgs e)
         {
 
         }

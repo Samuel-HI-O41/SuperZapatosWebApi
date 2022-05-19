@@ -60,27 +60,37 @@ namespace SuperZapatos.WinForms
 
         private async void button1_ClickAsync(object sender, EventArgs e)
         {
-            var url = "https://localhost:44300/Services/UpdateStore?dataStore";
-            var store = new Store()
+            string nameStore = txtBox_NameStore.Text;
+            if (string.IsNullOrWhiteSpace(nameStore))
             {
-                Id = int.Parse(txtBox_IdStore.Text),
-                Name = txtBox_NameStore.Text,
-                Address = txtBox_Address.Text
-            };
-            var response = await MyRequest.SendJsonRequest<Store>(url,store);
-            var model = JsonConvert.DeserializeObject<DtoResponse<int>>(response);
-            if (model.Estado)
-            {
-
-                await _storesForm.Update_DgvStores();
-                Close();
+                MessageBox.Show("El campo 'Nombre' es obligatorio", "Info");
             }
             else
             {
-                _storesForm.Clear_DgvStores();
-                MessageBox.Show("Error: " + model.Mensaje + "\n ErrorCode: " + model.Resultado, "Alerta");
-                Close();
+                var store = new Store()
+                {
+                    Id = int.Parse(txtBox_IdStore.Text),
+                    Name = txtBox_NameStore.Text,
+                    Address = txtBox_Address.Text
+                };
+
+                var url = "https://localhost:44300/Services/UpdateStore?dataStore";
+                var response = await MyRequest.SendJsonRequest<Store>(url, store);
+                var model = JsonConvert.DeserializeObject<DtoResponse<int>>(response);
+                if (model.Estado)
+                {
+
+                    await _storesForm.Update_DgvStores();
+                    Close();
+                }
+                else
+                {
+                    _storesForm.Clear_DgvStores();
+                    MessageBox.Show("Error: " + model.Mensaje + "\n ErrorCode: " + model.Resultado, "Alerta");
+                    Close();
+                }
             }
+            
         }
     }
 }

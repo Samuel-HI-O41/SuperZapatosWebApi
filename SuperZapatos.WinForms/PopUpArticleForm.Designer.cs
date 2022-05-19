@@ -81,6 +81,7 @@ namespace SuperZapatos.WinForms
             this.txt_NameArticle.Name = "txt_NameArticle";
             this.txt_NameArticle.Size = new System.Drawing.Size(251, 23);
             this.txt_NameArticle.TabIndex = 2;
+            this.txt_NameArticle.TextChanged += new System.EventHandler(this.txt_NameArticle_TextChanged);
             // 
             // txt_DescArticle
             // 

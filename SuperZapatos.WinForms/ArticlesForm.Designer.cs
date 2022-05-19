@@ -29,7 +29,7 @@ namespace SuperZapatos.WinForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_Articles = new System.Windows.Forms.DataGridView();
             this.ArticleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ArticleStoreId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,14 +55,14 @@ namespace SuperZapatos.WinForms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_Articles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Articles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Articles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_Articles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Articles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ArticleId,
@@ -160,7 +160,7 @@ namespace SuperZapatos.WinForms
             // 
             this.ddl_selectStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddl_selectStore.FormattingEnabled = true;
-            this.ddl_selectStore.Location = new System.Drawing.Point(106, 28);
+            this.ddl_selectStore.Location = new System.Drawing.Point(257, 27);
             this.ddl_selectStore.Margin = new System.Windows.Forms.Padding(2);
             this.ddl_selectStore.Name = "ddl_selectStore";
             this.ddl_selectStore.Size = new System.Drawing.Size(310, 21);
@@ -175,9 +175,9 @@ namespace SuperZapatos.WinForms
             this.label_StoreCbox.Location = new System.Drawing.Point(39, 28);
             this.label_StoreCbox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_StoreCbox.Name = "label_StoreCbox";
-            this.label_StoreCbox.Size = new System.Drawing.Size(63, 17);
+            this.label_StoreCbox.Size = new System.Drawing.Size(214, 17);
             this.label_StoreCbox.TabIndex = 2;
-            this.label_StoreCbox.Text = "Tienda:";
+            this.label_StoreCbox.Text = "Buscar articulos por Tienda:";
             this.label_StoreCbox.Click += new System.EventHandler(this.label1_Click);
             // 
             // newArticle
@@ -187,7 +187,7 @@ namespace SuperZapatos.WinForms
             this.newArticle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.newArticle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newArticle.ForeColor = System.Drawing.Color.White;
-            this.newArticle.Location = new System.Drawing.Point(519, 15);
+            this.newArticle.Location = new System.Drawing.Point(608, 14);
             this.newArticle.Margin = new System.Windows.Forms.Padding(2);
             this.newArticle.Name = "newArticle";
             this.newArticle.Size = new System.Drawing.Size(119, 45);
