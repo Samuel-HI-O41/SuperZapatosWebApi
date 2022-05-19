@@ -30,14 +30,19 @@ namespace SuperZapatos.WinForms
         private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var row = dgv_Stores.Rows[e.RowIndex];
-            var store = new Store()
+            var storeId = row.Cells[0].Value;
+            var store = new Store() { };
+            if (storeId != null)
             {
-                Id = int.Parse(row.Cells[0].Value.ToString()),
-                Name = row.Cells[1].Value.ToString(),
-                Address = row.Cells[2].Value.ToString()
-            };
+                store = new Store()
+                {
+                    Id = int.Parse(storeId.ToString()),
+                    Name = row.Cells[1].Value.ToString(),
+                    Address = row.Cells[2].Value.ToString()
+                };
+            }
 
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 3 && store.Id != 0)
             {
                 if (ActiveUpdateStoreForm != null)
                 {
@@ -45,11 +50,11 @@ namespace SuperZapatos.WinForms
                 }
                 var updateUpdateForme = new PopUpUpdateStore(store, this);
                 ActiveUpdateStoreForm = updateUpdateForme;
-                updateUpdateForme.Show();
+                updateUpdateForme.ShowDialog();
             }
-            else if (e.ColumnIndex == 4)
+            else if (e.ColumnIndex == 4 && store.Id != 0)
             {
-               DialogResult rAlert = MessageBox.Show($"¿Estas seguro de eliminar esta tienda: {store.Name} ?", "Alerta");
+                DialogResult rAlert = MessageBox.Show($"¿Estas seguro de eliminar esta tienda: {store.Name} ?", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (rAlert == DialogResult.OK)
                 {
                     var url = "https://localhost:44300/Services/DeleteStore/" + store.Id;
@@ -78,7 +83,7 @@ namespace SuperZapatos.WinForms
         private async void btn_SearchStores_Click(object sender, EventArgs e)
         {
             var filter = string.IsNullOrEmpty(txtBox_SearhStores.Text) ? null : txtBox_SearhStores.Text;
-           await Update_DgvStores(filter);
+            await Update_DgvStores(filter);
         }
 
         private async void newStore_Click(object sender, EventArgs e)
@@ -114,7 +119,6 @@ namespace SuperZapatos.WinForms
             model = JsonConvert.DeserializeObject<StoreRequest>(response);
             if (model.success)
             {
-                //dgv_Stores.DataSource = model.stores;
                 Construct_DgvStores(model.stores);
             }
             else

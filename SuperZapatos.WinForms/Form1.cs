@@ -71,5 +71,10 @@ namespace SuperZapatos.WinForms
             childForm.BringToFront();
             childForm.Show();
         }
+
+        private void btnMenuArticles_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new ArticlesForm());
+        }
     }
 }

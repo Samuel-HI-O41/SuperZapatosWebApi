@@ -247,7 +247,7 @@ namespace SuperZapatosWebApi.Controllers
                 List<Article> articles = Repository.GetDataAccess().Articles.Include("Store").ToList();
                 response = new ArticlesResponse()
                 {
-                    stores = articles,
+                    articles = articles,
                     success = true,
                     total_elements = articles.Count()
                 };
@@ -286,7 +286,7 @@ namespace SuperZapatosWebApi.Controllers
 
             try
             {
-                var storeDb = Repository.GetDataAccess().Stores.Where(x => x.Id == idStore).FirstOrDefault();
+                var storeDb = idStore == 0 ? new Store() { } : Repository.GetDataAccess().Stores.Where(x => x.Id == idStore).FirstOrDefault();
                 if (storeDb == null)
                 {
                     response = new ArticlesResponse()
@@ -299,10 +299,10 @@ namespace SuperZapatosWebApi.Controllers
                 }
                 else
                 {
-                    List<Article> articles = Repository.GetDataAccess().Articles.Include("Store").Where(x => x.StoreId == idStore).ToList();
+                    List<Article> articles = idStore == 0 ? Repository.GetDataAccess().Articles.Include("Store").ToList() : Repository.GetDataAccess().Articles.Include("Store").Where(x => x.StoreId == idStore).ToList();
                     response = new ArticlesResponse()
                     {
-                        stores = articles,
+                        articles = articles,
                         success = true,
                         total_elements = articles.Count()
                     };
@@ -419,7 +419,7 @@ namespace SuperZapatosWebApi.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
+        [HttpGet]
         public JsonResult DeleteArticle(int id)
         {
 

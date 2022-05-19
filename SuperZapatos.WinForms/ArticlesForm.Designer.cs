@@ -29,10 +29,13 @@ namespace SuperZapatos.WinForms
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.selectStore = new System.Windows.Forms.ComboBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dgv_Articles = new System.Windows.Forms.DataGridView();
+            this.ddl_selectStore = new System.Windows.Forms.ComboBox();
             this.label_StoreCbox = new System.Windows.Forms.Label();
+            this.newArticle = new System.Windows.Forms.Button();
             this.ArticleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ArticleStoreId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ArticleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ArticleDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ArticlePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,19 +44,29 @@ namespace SuperZapatos.WinForms
             this.StoreArticle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdateArticle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DeleteArticle = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.newArticle = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Articles)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgv_Articles
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgv_Articles.AllowUserToAddRows = false;
+            this.dgv_Articles.AllowUserToDeleteRows = false;
+            this.dgv_Articles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_Articles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Articles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_Articles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Articles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ArticleId,
+            this.ArticleStoreId,
             this.ArticleName,
             this.ArticleDescription,
             this.ArticlePrice,
@@ -62,114 +75,137 @@ namespace SuperZapatos.WinForms
             this.StoreArticle,
             this.UpdateArticle,
             this.DeleteArticle});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 88);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1042, 450);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgv_Articles.Location = new System.Drawing.Point(9, 72);
+            this.dgv_Articles.Margin = new System.Windows.Forms.Padding(2);
+            this.dgv_Articles.Name = "dgv_Articles";
+            this.dgv_Articles.ReadOnly = true;
+            this.dgv_Articles.RowHeadersWidth = 51;
+            this.dgv_Articles.RowTemplate.Height = 24;
+            this.dgv_Articles.Size = new System.Drawing.Size(782, 366);
+            this.dgv_Articles.TabIndex = 0;
+            this.dgv_Articles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // selectStore
+            // ddl_selectStore
             // 
-            this.selectStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.selectStore.FormattingEnabled = true;
-            this.selectStore.Location = new System.Drawing.Point(151, 29);
-            this.selectStore.Name = "selectStore";
-            this.selectStore.Size = new System.Drawing.Size(412, 24);
-            this.selectStore.TabIndex = 1;
+            this.ddl_selectStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddl_selectStore.FormattingEnabled = true;
+            this.ddl_selectStore.Location = new System.Drawing.Point(113, 24);
+            this.ddl_selectStore.Margin = new System.Windows.Forms.Padding(2);
+            this.ddl_selectStore.Name = "ddl_selectStore";
+            this.ddl_selectStore.Size = new System.Drawing.Size(310, 21);
+            this.ddl_selectStore.TabIndex = 1;
+            this.ddl_selectStore.SelectedIndexChanged += new System.EventHandler(this.ddl_selectStore_SelectedIndexChanged);
             // 
             // label_StoreCbox
             // 
             this.label_StoreCbox.AutoSize = true;
             this.label_StoreCbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_StoreCbox.Location = new System.Drawing.Point(61, 29);
+            this.label_StoreCbox.Location = new System.Drawing.Point(46, 24);
+            this.label_StoreCbox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_StoreCbox.Name = "label_StoreCbox";
-            this.label_StoreCbox.Size = new System.Drawing.Size(64, 20);
+            this.label_StoreCbox.Size = new System.Drawing.Size(56, 17);
             this.label_StoreCbox.TabIndex = 2;
             this.label_StoreCbox.Text = "Tienda:";
             this.label_StoreCbox.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // newArticle
+            // 
+            this.newArticle.Location = new System.Drawing.Point(510, 11);
+            this.newArticle.Margin = new System.Windows.Forms.Padding(2);
+            this.newArticle.Name = "newArticle";
+            this.newArticle.Size = new System.Drawing.Size(145, 45);
+            this.newArticle.TabIndex = 3;
+            this.newArticle.Text = "Agregar Articulo";
+            this.newArticle.UseVisualStyleBackColor = true;
+            this.newArticle.Click += new System.EventHandler(this.button1_Click);
             // 
             // ArticleId
             // 
             this.ArticleId.HeaderText = "ArticleId";
             this.ArticleId.MinimumWidth = 6;
             this.ArticleId.Name = "ArticleId";
+            this.ArticleId.ReadOnly = true;
             this.ArticleId.Visible = false;
+            // 
+            // ArticleStoreId
+            // 
+            this.ArticleStoreId.HeaderText = "StoreId";
+            this.ArticleStoreId.Name = "ArticleStoreId";
+            this.ArticleStoreId.ReadOnly = true;
+            this.ArticleStoreId.Visible = false;
             // 
             // ArticleName
             // 
             this.ArticleName.HeaderText = "Articulo";
             this.ArticleName.MinimumWidth = 6;
             this.ArticleName.Name = "ArticleName";
+            this.ArticleName.ReadOnly = true;
             // 
             // ArticleDescription
             // 
             this.ArticleDescription.HeaderText = "Descripción";
             this.ArticleDescription.MinimumWidth = 6;
             this.ArticleDescription.Name = "ArticleDescription";
+            this.ArticleDescription.ReadOnly = true;
             // 
             // ArticlePrice
             // 
             this.ArticlePrice.HeaderText = "Precio";
             this.ArticlePrice.MinimumWidth = 6;
             this.ArticlePrice.Name = "ArticlePrice";
+            this.ArticlePrice.ReadOnly = true;
             // 
             // ArticleInShelf
             // 
             this.ArticleInShelf.HeaderText = "En mostrador";
             this.ArticleInShelf.MinimumWidth = 6;
             this.ArticleInShelf.Name = "ArticleInShelf";
+            this.ArticleInShelf.ReadOnly = true;
             // 
             // ArticleInVault
             // 
             this.ArticleInVault.HeaderText = "En Bodega";
             this.ArticleInVault.MinimumWidth = 6;
             this.ArticleInVault.Name = "ArticleInVault";
+            this.ArticleInVault.ReadOnly = true;
             // 
             // StoreArticle
             // 
             this.StoreArticle.HeaderText = "Tienda";
             this.StoreArticle.MinimumWidth = 6;
             this.StoreArticle.Name = "StoreArticle";
+            this.StoreArticle.ReadOnly = true;
             // 
             // UpdateArticle
             // 
             this.UpdateArticle.HeaderText = "Actualizar";
             this.UpdateArticle.MinimumWidth = 6;
             this.UpdateArticle.Name = "UpdateArticle";
+            this.UpdateArticle.ReadOnly = true;
             // 
             // DeleteArticle
             // 
             this.DeleteArticle.HeaderText = "Eliminar";
             this.DeleteArticle.MinimumWidth = 6;
             this.DeleteArticle.Name = "DeleteArticle";
-            // 
-            // newArticle
-            // 
-            this.newArticle.Location = new System.Drawing.Point(675, 13);
-            this.newArticle.Name = "newArticle";
-            this.newArticle.Size = new System.Drawing.Size(193, 55);
-            this.newArticle.TabIndex = 3;
-            this.newArticle.Text = "Agregar Articulo";
-            this.newArticle.UseVisualStyleBackColor = true;
-            this.newArticle.Click += new System.EventHandler(this.button1_Click);
+            this.DeleteArticle.ReadOnly = true;
             // 
             // ArticlesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1066, 550);
+            this.ClientSize = new System.Drawing.Size(800, 447);
             this.Controls.Add(this.newArticle);
             this.Controls.Add(this.label_StoreCbox);
-            this.Controls.Add(this.selectStore);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ddl_selectStore);
+            this.Controls.Add(this.dgv_Articles);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ArticlesForm";
             this.Text = "ArticlesForm";
             this.Load += new System.EventHandler(this.ArticlesForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Articles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,10 +213,12 @@ namespace SuperZapatos.WinForms
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox selectStore;
+        private System.Windows.Forms.DataGridView dgv_Articles;
+        private System.Windows.Forms.ComboBox ddl_selectStore;
         private System.Windows.Forms.Label label_StoreCbox;
+        private System.Windows.Forms.Button newArticle;
         private System.Windows.Forms.DataGridViewTextBoxColumn ArticleId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ArticleStoreId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ArticleName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ArticleDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ArticlePrice;
@@ -189,6 +227,5 @@ namespace SuperZapatos.WinForms
         private System.Windows.Forms.DataGridViewTextBoxColumn StoreArticle;
         private System.Windows.Forms.DataGridViewButtonColumn UpdateArticle;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteArticle;
-        private System.Windows.Forms.Button newArticle;
     }
 }
