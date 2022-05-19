@@ -31,13 +31,13 @@ namespace SuperZapatos.WinForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.btnMenuArticles = new System.Windows.Forms.Button();
             this.btnMenuStores = new System.Windows.Forms.Button();
             this.btnMenuMain = new System.Windows.Forms.Button();
             this.panelMenulogo = new System.Windows.Forms.Panel();
             this.panelMainContainer = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox_MainLogo = new System.Windows.Forms.PictureBox();
-            this.btnMenuArticles = new System.Windows.Forms.Button();
             this.panelSideMenu.SuspendLayout();
             this.panelMainContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_MainLogo)).BeginInit();
@@ -56,6 +56,26 @@ namespace SuperZapatos.WinForms
             this.panelSideMenu.Name = "panelSideMenu";
             this.panelSideMenu.Size = new System.Drawing.Size(250, 550);
             this.panelSideMenu.TabIndex = 0;
+            // 
+            // btnMenuArticles
+            // 
+            this.btnMenuArticles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnMenuArticles.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMenuArticles.FlatAppearance.BorderSize = 0;
+            this.btnMenuArticles.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnMenuArticles.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnMenuArticles.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnMenuArticles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuArticles.ForeColor = System.Drawing.Color.Snow;
+            this.btnMenuArticles.Location = new System.Drawing.Point(0, 340);
+            this.btnMenuArticles.Name = "btnMenuArticles";
+            this.btnMenuArticles.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnMenuArticles.Size = new System.Drawing.Size(250, 47);
+            this.btnMenuArticles.TabIndex = 4;
+            this.btnMenuArticles.Text = "Articulos";
+            this.btnMenuArticles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuArticles.UseVisualStyleBackColor = false;
+            this.btnMenuArticles.Click += new System.EventHandler(this.btnMenuArticles_Click_1);
             // 
             // btnMenuStores
             // 
@@ -144,26 +164,6 @@ namespace SuperZapatos.WinForms
             this.pictureBox_MainLogo.TabIndex = 0;
             this.pictureBox_MainLogo.TabStop = false;
             this.pictureBox_MainLogo.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // btnMenuArticles
-            // 
-            this.btnMenuArticles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnMenuArticles.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMenuArticles.FlatAppearance.BorderSize = 0;
-            this.btnMenuArticles.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnMenuArticles.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnMenuArticles.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnMenuArticles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenuArticles.ForeColor = System.Drawing.Color.Snow;
-            this.btnMenuArticles.Location = new System.Drawing.Point(0, 340);
-            this.btnMenuArticles.Name = "btnMenuArticles";
-            this.btnMenuArticles.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnMenuArticles.Size = new System.Drawing.Size(250, 47);
-            this.btnMenuArticles.TabIndex = 4;
-            this.btnMenuArticles.Text = "Articulos";
-            this.btnMenuArticles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuArticles.UseVisualStyleBackColor = false;
-            this.btnMenuArticles.Click += new System.EventHandler(this.btnMenuArticles_Click_1);
             // 
             // Form1
             // 

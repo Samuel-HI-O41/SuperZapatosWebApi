@@ -152,14 +152,18 @@ namespace SuperZapatos.WinForms
             this.btn_AddArticle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_AddArticle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AddArticle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(145)))), ((int)(((byte)(252)))));
+            this.btn_AddArticle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
+            this.btn_AddArticle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_AddArticle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AddArticle.ForeColor = System.Drawing.Color.White;
             this.btn_AddArticle.Location = new System.Drawing.Point(123, 264);
             this.btn_AddArticle.Margin = new System.Windows.Forms.Padding(2);
             this.btn_AddArticle.Name = "btn_AddArticle";
             this.btn_AddArticle.Size = new System.Drawing.Size(132, 42);
             this.btn_AddArticle.TabIndex = 12;
             this.btn_AddArticle.Text = "Guardar";
-            this.btn_AddArticle.UseVisualStyleBackColor = true;
+            this.btn_AddArticle.UseVisualStyleBackColor = false;
             this.btn_AddArticle.Click += new System.EventHandler(this.btn_AddArticle_Click);
             // 
             // groupBox1
@@ -180,6 +184,8 @@ namespace SuperZapatos.WinForms
             this.groupBox1.Controls.Add(this.txt_DescArticle);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(372, 247);
@@ -246,6 +252,7 @@ namespace SuperZapatos.WinForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(391, 315);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_AddArticle);

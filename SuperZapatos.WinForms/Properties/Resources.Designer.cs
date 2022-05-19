@@ -63,9 +63,9 @@ namespace SuperZapatos.WinForms.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SZ_Logo_Menu {
+        internal static System.Drawing.Bitmap loading {
             get {
-                object obj = ResourceManager.GetObject("SZ-Logo-Menu", resourceCulture);
+                object obj = ResourceManager.GetObject("loading", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace SuperZapatos.WinForms.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SZ_Logo1 {
+        internal static System.Drawing.Bitmap SZ_Logo_Menu {
             get {
-                object obj = ResourceManager.GetObject("SZ-Logo1", resourceCulture);
+                object obj = ResourceManager.GetObject("SZ-Logo-Menu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

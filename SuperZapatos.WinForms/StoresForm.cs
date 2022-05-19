@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -21,6 +22,8 @@ namespace SuperZapatos.WinForms
     {
         private RequestHelper MyRequest { get; set; }
         private Form ActiveUpdateStoreForm = null;
+        LoadingForm loading;
+
         public StoresForm()
         {
             InitializeComponent();
@@ -30,15 +33,15 @@ namespace SuperZapatos.WinForms
         private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var row = dgv_Stores.Rows[e.RowIndex];
-            var storeId = row.Cells[0].Value;
+            var storeId = row.Cells["StoreId"].Value;
             var store = new Store() { };
             if (storeId != null)
             {
                 store = new Store()
                 {
                     Id = int.Parse(storeId.ToString()),
-                    Name = row.Cells[1].Value.ToString(),
-                    Address = row.Cells[2].Value.ToString()
+                    Name = row.Cells["StoreName"].Value == null ? "": row.Cells["StoreName"].Value.ToString(),
+                    Address = row.Cells["Address"].Value == null ? "" : row.Cells["Address"].Value.ToString()
                 };
             }
 
@@ -88,33 +91,58 @@ namespace SuperZapatos.WinForms
 
         private async void newStore_Click(object sender, EventArgs e)
         {
-            var newStore = new Store()
+            string nameNewStore = txtBox_NewStore_Name.Text;
+            if (string.IsNullOrWhiteSpace(nameNewStore))
             {
-                Name = txtBox_NewStore_Name.Text,
-                Address = txtBox_NewStore_Address.Text
-            };
-
-            var url = "https://localhost:44300/Services/CreateStore?dataStore";
-
-            var response = await MyRequest.SendJsonRequest<Store>(url, newStore);
-            var model = JsonConvert.DeserializeObject<DtoResponse<int>>(response);
-            if (model.Estado)
-            {
-                await Update_DgvStores();
+                MessageBox.Show("El campo 'Nombre de la tienda' es obligatorio", "Info");
             }
             else
             {
-                Clear_DgvStores();
-                MessageBox.Show("Error: " + model.Mensaje + "\n ErrorCode: " + model.Resultado, "Alerta");
+                ShowLoading();
+                Task oTask = new Task(Algo);
+                oTask.Start();
+                await oTask;
+
+                var newStore = new Store()
+                {
+                    Name = txtBox_NewStore_Name.Text,
+                    Address = txtBox_NewStore_Address.Text
+                };
+
+                var url = "https://localhost:44300/Services/CreateStore?dataStore";
+
+                var response = await MyRequest.SendJsonRequest<Store>(url, newStore);
+                var model = JsonConvert.DeserializeObject<DtoResponse<int>>(response);
+                HideLoading();
+                if (model.Estado)
+                {
+                    await Update_DgvStores();
+                }
+                else
+                {
+                    Clear_DgvStores();
+                    MessageBox.Show("Error: " + model.Mensaje + "\n ErrorCode: " + model.Resultado, "Alerta");
+                }
             }
+            
+        }
+        private void lbl_NameStore_Click(object sender, EventArgs e)
+        {
+
         }
 
         #region publicMethods
 
         public async Task Update_DgvStores(string filter = null)
         {
+            ShowLoading();
+            Task oTask = new Task(Algo);
+            oTask.Start();
+            await oTask;
+
             var url = "https://localhost:44300/Services/Stores?nameStore=" + filter;
             var response = await MyRequest.SendSampleRequest<string>(url, "Get");
+            HideLoading();
             var model = new StoreRequest() { };
             model = JsonConvert.DeserializeObject<StoreRequest>(response);
             if (model.success)
@@ -131,6 +159,25 @@ namespace SuperZapatos.WinForms
         {
             dgv_Stores.Rows.Clear();
         }
+
+        public void ShowLoading()
+        {
+            loading = new LoadingForm();
+            loading.Show();
+        }
+
+        public void HideLoading()
+        {
+            if (loading != null)
+            {
+                loading.Close();
+            };
+        }
+
+        public void Algo()
+        {
+            Thread.Sleep(500);
+        }
         #endregion
 
         #region privateMethods
@@ -143,5 +190,7 @@ namespace SuperZapatos.WinForms
             }
         }
         #endregion
+
+       
     }
 }

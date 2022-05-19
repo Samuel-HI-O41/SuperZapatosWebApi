@@ -29,6 +29,8 @@ namespace SuperZapatos.WinForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_Stores = new System.Windows.Forms.DataGridView();
             this.StoreId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +60,14 @@ namespace SuperZapatos.WinForms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_Stores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Stores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Stores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Stores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StoreId,
@@ -65,8 +75,16 @@ namespace SuperZapatos.WinForms
             this.Address,
             this.UpdateStore,
             this.DeleteStore});
-            this.dgv_Stores.Location = new System.Drawing.Point(23, 154);
-            this.dgv_Stores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Stores.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_Stores.Location = new System.Drawing.Point(21, 158);
+            this.dgv_Stores.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_Stores.Name = "dgv_Stores";
             this.dgv_Stores.ReadOnly = true;
             this.dgv_Stores.RowHeadersWidth = 51;
@@ -114,19 +132,24 @@ namespace SuperZapatos.WinForms
             // 
             // newStore
             // 
+            this.newStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(145)))), ((int)(((byte)(252)))));
+            this.newStore.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.newStore.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.newStore.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.newStore.ForeColor = System.Drawing.Color.White;
             this.newStore.Location = new System.Drawing.Point(543, 28);
-            this.newStore.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.newStore.Margin = new System.Windows.Forms.Padding(2);
             this.newStore.Name = "newStore";
             this.newStore.Size = new System.Drawing.Size(110, 39);
             this.newStore.TabIndex = 1;
             this.newStore.Text = "Agregar Tienda";
-            this.newStore.UseVisualStyleBackColor = true;
+            this.newStore.UseVisualStyleBackColor = false;
             this.newStore.Click += new System.EventHandler(this.newStore_Click);
             // 
             // txtBox_NewStore_Name
             // 
             this.txtBox_NewStore_Name.Location = new System.Drawing.Point(142, 25);
-            this.txtBox_NewStore_Name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBox_NewStore_Name.Margin = new System.Windows.Forms.Padding(2);
             this.txtBox_NewStore_Name.Name = "txtBox_NewStore_Name";
             this.txtBox_NewStore_Name.Size = new System.Drawing.Size(325, 20);
             this.txtBox_NewStore_Name.TabIndex = 2;
@@ -134,7 +157,7 @@ namespace SuperZapatos.WinForms
             // txtBox_NewStore_Address
             // 
             this.txtBox_NewStore_Address.Location = new System.Drawing.Point(140, 56);
-            this.txtBox_NewStore_Address.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBox_NewStore_Address.Margin = new System.Windows.Forms.Padding(2);
             this.txtBox_NewStore_Address.Name = "txtBox_NewStore_Address";
             this.txtBox_NewStore_Address.Size = new System.Drawing.Size(325, 20);
             this.txtBox_NewStore_Address.TabIndex = 3;
@@ -142,12 +165,13 @@ namespace SuperZapatos.WinForms
             // lbl_NameStore
             // 
             this.lbl_NameStore.AutoSize = true;
-            this.lbl_NameStore.Location = new System.Drawing.Point(25, 28);
+            this.lbl_NameStore.Location = new System.Drawing.Point(15, 28);
             this.lbl_NameStore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_NameStore.Name = "lbl_NameStore";
-            this.lbl_NameStore.Size = new System.Drawing.Size(102, 13);
+            this.lbl_NameStore.Size = new System.Drawing.Size(121, 13);
             this.lbl_NameStore.TabIndex = 4;
             this.lbl_NameStore.Text = "Nombre de la tienda";
+            this.lbl_NameStore.Click += new System.EventHandler(this.lbl_NameStore_Click);
             // 
             // lbl_AddressStore
             // 
@@ -155,7 +179,7 @@ namespace SuperZapatos.WinForms
             this.lbl_AddressStore.Location = new System.Drawing.Point(75, 59);
             this.lbl_AddressStore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_AddressStore.Name = "lbl_AddressStore";
-            this.lbl_AddressStore.Size = new System.Drawing.Size(52, 13);
+            this.lbl_AddressStore.Size = new System.Drawing.Size(61, 13);
             this.lbl_AddressStore.TabIndex = 5;
             this.lbl_AddressStore.Text = "Dirección";
             // 
@@ -168,33 +192,42 @@ namespace SuperZapatos.WinForms
             // 
             // btn_SearchStores
             // 
+            this.btn_SearchStores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(145)))), ((int)(((byte)(252)))));
+            this.btn_SearchStores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.btn_SearchStores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.btn_SearchStores.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_SearchStores.Location = new System.Drawing.Point(543, 14);
-            this.btn_SearchStores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_SearchStores.Margin = new System.Windows.Forms.Padding(2);
             this.btn_SearchStores.Name = "btn_SearchStores";
             this.btn_SearchStores.Size = new System.Drawing.Size(110, 28);
             this.btn_SearchStores.TabIndex = 7;
             this.btn_SearchStores.Text = "Buscar Tiendas";
-            this.btn_SearchStores.UseVisualStyleBackColor = true;
+            this.btn_SearchStores.UseVisualStyleBackColor = false;
             this.btn_SearchStores.Click += new System.EventHandler(this.btn_SearchStores_Click);
             // 
             // lbl_SearchStore
             // 
             this.lbl_SearchStore.AutoSize = true;
-            this.lbl_SearchStore.Location = new System.Drawing.Point(31, 18);
+            this.lbl_SearchStore.Location = new System.Drawing.Point(22, 17);
             this.lbl_SearchStore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_SearchStore.Name = "lbl_SearchStore";
-            this.lbl_SearchStore.Size = new System.Drawing.Size(96, 13);
+            this.lbl_SearchStore.Size = new System.Drawing.Size(113, 13);
             this.lbl_SearchStore.TabIndex = 8;
             this.lbl_SearchStore.Text = "Buscar por nombre";
             this.lbl_SearchStore.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.lbl_NameStore);
             this.groupBox1.Controls.Add(this.newStore);
             this.groupBox1.Controls.Add(this.txtBox_NewStore_Name);
             this.groupBox1.Controls.Add(this.txtBox_NewStore_Address);
             this.groupBox1.Controls.Add(this.lbl_AddressStore);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.groupBox1.Location = new System.Drawing.Point(23, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(703, 84);
@@ -204,12 +237,17 @@ namespace SuperZapatos.WinForms
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.lbl_SearchStore);
             this.groupBox2.Controls.Add(this.txtBox_SearhStores);
             this.groupBox2.Controls.Add(this.btn_SearchStores);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(23, 102);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(703, 47);
+            this.groupBox2.Size = new System.Drawing.Size(703, 51);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtrar lista de tiendas";
@@ -219,12 +257,13 @@ namespace SuperZapatos.WinForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(735, 447);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgv_Stores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StoresForm";
             this.Text = "Tiendas";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Stores)).EndInit();

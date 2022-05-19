@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Windows.Forms;
@@ -17,11 +18,12 @@ namespace SuperZapatos.WinForms
     public partial class ArticlesForm : Form
     {
         private RequestHelper MyRequest { get; set; }
+        LoadingForm loading;
 
         public ArticlesForm()
         {
-            InitializeComponent();
             MyRequest = new RequestHelper();
+            InitializeComponent();
         }
 
         private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -80,9 +82,21 @@ namespace SuperZapatos.WinForms
 
         }
 
-        private void ArticlesForm_Load(object sender, EventArgs e)
+        private async void ArticlesForm_Load(object sender, EventArgs e)
         {
-            SettingDropdowm_Stores();
+            ShowLoading();
+            Task oTask = new Task(Algo);
+            oTask.Start();
+            await oTask;
+
+            var listStores = await GetListStores();
+            HideLoading();
+
+            var itemAllStores = new Store() { Name = "Todas", Id = 0 };
+            listStores.Add(itemAllStores);
+            ddl_selectStore.DataSource = listStores.OrderBy(x=>x.Id).ToList();
+            ddl_selectStore.DisplayMember = "Name";
+            ddl_selectStore.ValueMember = "Id";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -118,6 +132,7 @@ namespace SuperZapatos.WinForms
 
             return storeList.ToList();
         }
+
         public void Clear_DgvArticles()
         {
             dgv_Articles.Rows.Clear();
@@ -140,20 +155,13 @@ namespace SuperZapatos.WinForms
             }
         }
 
+        public void Algo()
+        {
+            Thread.Sleep(500);
+        }
         #endregion
 
         #region privateMethods
-
-        private async void SettingDropdowm_Stores()
-        {
-            var storeList = await GetListStores();
-            var itemAllStores = new Store() { Name = "Todas", Id = 0 };
-            storeList.Add(itemAllStores);
-            ddl_selectStore.DataSource = storeList.OrderBy(x => x.Id).ToList();
-            ddl_selectStore.DisplayMember = "Name";
-            ddl_selectStore.ValueMember = "Id";
-            ddl_selectStore.SelectedValue = 0;
-        }
 
         private void Construct_DgvArticles(List<Article> articles)
         {
@@ -167,6 +175,19 @@ namespace SuperZapatos.WinForms
             ArticleInVault.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
+        public void ShowLoading()
+        {
+            loading = new LoadingForm();
+            loading.Show();
+        }
+
+        public void HideLoading()
+        {
+            if (loading != null)
+            {
+                loading.Close();
+            };
+        }
         #endregion
 
 
